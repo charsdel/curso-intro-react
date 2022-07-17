@@ -45,7 +45,7 @@ function useLocalStorage(itemName, initialValue){
         }
       },3000)
   
-    });
+    },[]);
   
   
     

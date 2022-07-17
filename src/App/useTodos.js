@@ -7,10 +7,9 @@ import { useLocalStorage } from "./useLocalStorage";
 //TodoContext es un objeto que tienen dos componentes 
 //TodoContext.provider y TodoContext.consumer 
 
-const TodoContext = React.createContext();
 
 
-function TodoProvider(props){
+function useTodos(){
 
       //se renombra todos
     //se renombra saveTodos
@@ -73,6 +72,8 @@ function TodoProvider(props){
   //funcion para completar todos
     const completeTodo = (text) =>{
 
+      console.log(text)
+
       const todoIndex = todos.findIndex(todo => todo.text === text);
 
       //clonar la lista de todos
@@ -85,6 +86,7 @@ function TodoProvider(props){
   //funcion para completar todos
     const deleteTodo = (text) =>{
 
+    console.log(text)
     const todoIndex = todos.findIndex(todo => todo.text === text);
 
     //clonar la lista de todos
@@ -97,36 +99,27 @@ function TodoProvider(props){
     saveTodos(newItem);
     };
 
-    return(
+    return{
 
 
-        //en value indico todos los estados que voy a compartir
-        <TodoContext.Provider value={{
-
-            loading,
-            error,
-            totalTodos,
-            completedTodos,
-            searchValue,
-            setSearchValue,
-            searchedTodos,
-            addTodo,
-            completeTodo,
-            deleteTodo,
-            openModal,
-            setOpenModal
-        }}>
-
-        {props.children}
-        </TodoContext.Provider>
-
-        //props.children permite consumir los estados de donde quiera que se llame providers
-        //envolvemos a todos los componentes que se manden dentro de TodoProvider
+      loading,
+      error,
+      totalTodos,
+      completedTodos,
+      searchValue,
+      setSearchValue,
+      searchedTodos,
+      addTodo,
+      completeTodo,
+      deleteTodo,
+      openModal,
+      setOpenModal
+       
         
-    );
+    };
 
 }
 
 
 // Exportamos nuestro proveedor y nuestro contexto, en el context también esta el consumer, para acceder a nuestro contexto
-export { TodoContext, TodoProvider };
+export { useTodos };
