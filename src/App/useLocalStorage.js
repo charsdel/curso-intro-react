@@ -4,6 +4,8 @@ import React from "react";
 
 function useLocalStorage(itemName, initialValue){
 
+    const [sincronizedItem, setSincronizedItem] = React.useState(true);
+
     //estado de error
     const [error,setError] = React.useState(false);
     
@@ -39,13 +41,14 @@ function useLocalStorage(itemName, initialValue){
   
             setItem(parsedItem);
             setLoading(false);
+            setSincronizedItem(true);
   
         }catch(error){
           setError(Error);
         }
       },3000)
   
-    },[]);
+    },[sincronizedItem]);
   
   
     
@@ -68,6 +71,14 @@ function useLocalStorage(itemName, initialValue){
         
       }
     };
+
+
+    const sincronizeItem = () =>{
+
+      setLoading(true);
+      setSincronizedItem(false);
+
+    };
   
   
     //el hook necesita retornar el valor y la funcion que usa para cambiar el estado de la variable
@@ -81,6 +92,7 @@ function useLocalStorage(itemName, initialValue){
       saveTodos,
       loading,
       error,
+      sincronizeItem
     };
     
   }

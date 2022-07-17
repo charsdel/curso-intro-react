@@ -21,7 +21,7 @@ export const TodoList = (props) => {
     
         {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptyResultTodos(props.searchText) }
 
-        {props.searchedTodos.map (renderFunc)}
+        {(!props.loading && !props.error) && props.searchedTodos.map (renderFunc)}
 
         <ul>
             {props.children}
