@@ -16,7 +16,7 @@ import { Todoform } from "../TodoForm";
 import { CreateTodoButton } from "../CreateTodoButton";
 import { Modal } from "../Modal"
 
-import { ChangeAlertwithStorageListener } from "../ChangeAlert"
+import { ChangeAlert } from "../ChangeAlert"
 //para el skeleton de los errores
 
 import {TodoError} from "../TodoError"
@@ -127,7 +127,7 @@ function App() {
       
       />   
 
-      <ChangeAlertwithStorageListener
+      <ChangeAlert
       
         sincronize = {sincronizeTodos}
       
